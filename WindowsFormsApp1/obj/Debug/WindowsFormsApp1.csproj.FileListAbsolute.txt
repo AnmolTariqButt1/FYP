@@ -1,0 +1,17 @@
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Advisor.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Evaluation.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Home.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Project.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Student_Group.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Assignment.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AssignAdvisor.resources
+E:\Books\sem6\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
