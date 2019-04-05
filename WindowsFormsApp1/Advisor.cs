@@ -34,6 +34,21 @@ namespace WindowsFormsApp1
 		{
 
 		}
+
+
+		private void ClearData()
+		{
+			fName.Text = "";
+			lName.Text = "";
+			Contact.Text = "";
+			Email.Text = "";
+			comboBox1.Text = "";
+			sal.Text = "";
+
+
+		}
+
+
 		string Gender;
 
 
@@ -61,9 +76,11 @@ namespace WindowsFormsApp1
 		}
 
 
+
+
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (fName.Text != "" && lName.Text != "" && Contact.Text != "" && Email.Text != "" && sal.Text != "" && Contact.Text != "")
+			if (fName.Text != "" && lName.Text != "" && Contact.Text != "" && Email.Text != "" && sal.Text != "" && Contact.Text != "" && comboBox1.Text != "")
 			{
 				con.Open();
 				int gender = GetGenderFromLookup(Gender);
@@ -85,12 +102,13 @@ namespace WindowsFormsApp1
 				int i = cmd1.ExecuteNonQuery();
 				con.Close();
 				MessageBox.Show("Advisor is registered successfully", "Record Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+				ClearData();
 
 			}
 			else
 			{
-				MessageBox.Show("Fill all the fields");
+				MessageBox.Show("Fill all the Fields!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 			}
 		}
 
@@ -120,6 +138,96 @@ namespace WindowsFormsApp1
 			SDA.Fill(dt);
 			dataGridView1.DataSource = dt;
 			con.Close();
+		}
+
+		int selectedRow;
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			selectedRow = e.RowIndex;
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			con.Open();
+
+			SqlCommand count = new SqlCommand("SELECT COUNT(*) FROM Advisor", con);
+			int c = Convert.ToInt32(count.ExecuteScalar().ToString());
+			if (fName.Text != "" && lName.Text != "" && Contact.Text != "" && Email.Text != "" && sal.Text != "" &&  comboBox1.Text != "")
+			{
+				if (c != 0)
+				{
+					SqlCommand designation = new SqlCommand("SELECT Id FROM LookUp WHERE Category = 'DESIGNATION' AND Value = '" + comboBox1.Text + "'", con);
+					int d = Convert.ToInt32(designation.ExecuteScalar().ToString());
+					int gender = GetGenderFromLookup(Gender);
+					DataGridViewRow row = new DataGridViewRow();
+					row = dataGridView1.Rows[selectedRow];
+					row.Cells[1].Value = fName.Text;
+					row.Cells[2].Value = lName.Text;
+					row.Cells[3].Value = Contact.Text;
+					row.Cells[4].Value = Email.Text;
+					row.Cells[5].Value = DateTime.Parse(DOB.Text);
+					row.Cells[6].Value = d;
+					row.Cells[7].Value = sal.Text;
+					row.Cells[8].Value = gender;
+
+
+
+					con.Close();
+					MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClearData();
+
+				}
+				else
+				{
+					MessageBox.Show("There is No Data. Insert Data First.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+
+			}
+			else
+				MessageBox.Show("Fill all the Fields!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+		}
+
+		private void button4_Click_1(object sender, EventArgs e)
+		{
+			Home home = new Home();
+			home.Show();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			Form1 home = new Form1();
+			home.Show();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			Advisor home = new Advisor();
+			home.Show();
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			Project home = new Project();
+			home.Show();
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			Evaluation home = new Evaluation();
+			home.Show();
+		}
+
+		private void button11_Click(object sender, EventArgs e)
+		{
+			Student_Group home = new Student_Group();
+			home.Show();
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			AssignAdvisor home = new AssignAdvisor();
+			home.Show();
 		}
 	}
 }

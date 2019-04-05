@@ -29,15 +29,17 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.advisor = new System.Windows.Forms.ComboBox();
 			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.advisor = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.Save = new System.Windows.Forms.Button();
 			this.View = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -46,10 +48,10 @@
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+			this.groupBox1.Controls.Add(this.advisor);
 			this.groupBox1.Controls.Add(this.comboBox2);
 			this.groupBox1.Controls.Add(this.comboBox1);
 			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.advisor);
 			this.groupBox1.Controls.Add(this.label8);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
@@ -59,6 +61,14 @@
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+			// 
+			// advisor
+			// 
+			this.advisor.FormattingEnabled = true;
+			this.advisor.Location = new System.Drawing.Point(207, 71);
+			this.advisor.Name = "advisor";
+			this.advisor.Size = new System.Drawing.Size(193, 21);
+			this.advisor.TabIndex = 25;
 			// 
 			// comboBox2
 			// 
@@ -90,13 +100,6 @@
 			this.label3.Size = new System.Drawing.Size(96, 22);
 			this.label3.TabIndex = 21;
 			this.label3.Text = "Project Title";
-			// 
-			// advisor
-			// 
-			this.advisor.Location = new System.Drawing.Point(207, 71);
-			this.advisor.Name = "advisor";
-			this.advisor.Size = new System.Drawing.Size(193, 20);
-			this.advisor.TabIndex = 9;
 			// 
 			// label8
 			// 
@@ -131,7 +134,7 @@
 			// Save
 			// 
 			this.Save.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Save.Location = new System.Drawing.Point(74, 266);
+			this.Save.Location = new System.Drawing.Point(44, 266);
 			this.Save.Name = "Save";
 			this.Save.Size = new System.Drawing.Size(75, 23);
 			this.Save.TabIndex = 8;
@@ -142,20 +145,44 @@
 			// View
 			// 
 			this.View.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.View.Location = new System.Drawing.Point(594, 266);
+			this.View.Location = new System.Drawing.Point(690, 266);
 			this.View.Name = "View";
 			this.View.Size = new System.Drawing.Size(75, 23);
 			this.View.TabIndex = 13;
 			this.View.Text = "View";
 			this.View.UseVisualStyleBackColor = true;
+			this.View.Click += new System.EventHandler(this.View_Click);
+			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(253, 266);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 25;
+			this.button1.Text = "Update";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// button2
+			// 
+			this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button2.Location = new System.Drawing.Point(451, 266);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 26;
+			this.button2.Text = "Delete";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(1, 295);
+			this.dataGridView1.Location = new System.Drawing.Point(3, 295);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(796, 172);
-			this.dataGridView1.TabIndex = 24;
+			this.dataGridView1.Size = new System.Drawing.Size(794, 169);
+			this.dataGridView1.TabIndex = 27;
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			// 
 			// AssignAdvisor
 			// 
@@ -163,6 +190,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(797, 467);
 			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.button2);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.View);
 			this.Controls.Add(this.Save);
 			this.Controls.Add(this.groupBox1);
@@ -179,7 +208,6 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.TextBox advisor;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
@@ -188,6 +216,9 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.ComboBox advisor;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.DataGridView dataGridView1;
 	}
 }

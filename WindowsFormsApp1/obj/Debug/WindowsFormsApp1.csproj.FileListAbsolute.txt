@@ -34,3 +34,8 @@ C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsForm
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GroupProject.resources
+C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.PDF.resources
+C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\bin\Debug\itextsharp.dll
+C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\bin\Debug\itextsharp.xml
+C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Reports.resources

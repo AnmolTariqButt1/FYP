@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic;
 
 namespace WindowsFormsApp1
 {
@@ -36,10 +37,20 @@ namespace WindowsFormsApp1
 		{
 
 		}
+		int Id = 0;
 
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
+			Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+			fName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+			 lName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
+			 Contact.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			RegNo.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+			Email.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+			dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+			    Gender = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+			 
 		}
 
 
@@ -66,40 +77,65 @@ namespace WindowsFormsApp1
 			return value;
 		}
 
+		private void ClearData()
+		{
+			fName.Text = "";
+			lName.Text = "";
+			Email.Text = "";
+		Contact.Text = "";
+			Gender = "";
+			RegNo.Text = "";
 
-		
+
+		}
+
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (fName.Text != "" && lName.Text != "" && RegNo.Text != "" && Gender != "" && Email.Text != "" && Contact.Text != "")
+
+
+			con.Open();
+			SqlCommand reg = new SqlCommand("SELECT COUNT(RegistrationNo) FROM Student WHERE (RegistrationNo = @registration)", con);
+			reg.Parameters.AddWithValue("@registration", RegNo.Text);
+			int exists = (int)reg.ExecuteScalar();
+			con.Close();
+			if (exists > 0)
 			{
-				con.Open();
-				int gender = GetGenderFromLookup(Gender);
-
-				String query = " INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth, Gender) VALUES('" + fName.Text + "','" + lName.Text + "','" + Contact.Text + "','" + Email.Text + "','" + DateTime.Parse(dateTimePicker1.Text) + "','" + gender + "')";
-				SqlDataAdapter SDA = new SqlDataAdapter(query, con);
-				SDA.SelectCommand.ExecuteNonQuery();
-
-				int value1 = 0;
-				string query1 = "Select Id from Person where (Id = SCOPE_IDENTITY())";
-				SqlCommand cmd = new SqlCommand(query1, con);
-				var v = cmd.ExecuteScalar().ToString();
-				value1 = int.Parse(v);
-				string q = "insert into Student values('" + value1 + "','" + Reg.Text.ToString() + "')";
-				SqlCommand cmd1 = new SqlCommand(q, con);
-				int i = cmd1.ExecuteNonQuery();
-				con.Close();
-				MessageBox.Show("Student is registered successfully", "Record Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				
-
+				MessageBox.Show("Student is already registered");
 			}
 			else
 			{
-				MessageBox.Show("Fill all the fields");
-			}
-		
+
+				if (fName.Text != "" && lName.Text != "" && RegNo.Text != "" && Gender != "" && Email.Text != "" && Contact.Text != "")
+				{
+					con.Open();
+					int gender = GetGenderFromLookup(Gender);
+
+					String query = " INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth, Gender) VALUES('" + fName.Text + "','" + lName.Text + "','" + Contact.Text + "','" + Email.Text + "','" + DateTime.Parse(dateTimePicker1.Text) + "','" + gender + "')";
+					SqlDataAdapter SDA = new SqlDataAdapter(query, con);
+					SDA.SelectCommand.ExecuteNonQuery();
+
+					int value1 = 0;
+					string query1 = "Select Id from Person where (Id = SCOPE_IDENTITY())";
+					SqlCommand cmd = new SqlCommand(query1, con);
+					var v = cmd.ExecuteScalar().ToString();
+					value1 = int.Parse(v);
+					string q = "insert into Student values('" + value1 + "','" + Reg.Text.ToString() + "')";
+					SqlCommand cmd1 = new SqlCommand(q, con);
+					int i = cmd1.ExecuteNonQuery();
+					con.Close();
+					MessageBox.Show("Student is registered successfully", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClearData();
+
+				}
+				else
+				{
+					MessageBox.Show("Fill all the Fields", "Registration ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				}
+
+
 			
-
-
+		}
 
 
 		}
@@ -159,14 +195,35 @@ namespace WindowsFormsApp1
 		private void button2_Click(object sender, EventArgs e)
 		{
 			con.Open();
-			int gender = GetGenderFromLookup(Gender);
-			string query = "UPDATE Person SET FirstName = '"+fName+ "',LastName = '" + lName.Text + "',Contact='" + Contact.Text + "',Email='" + Email.Text + "',DateOfBirth='" + DateTime.Parse(dateTimePicker1.Text) + "',Gender='" + gender + "'";
-			SqlDataAdapter SDA = new SqlDataAdapter(query, con);
 
-			SDA.SelectCommand.ExecuteNonQuery();
+			if (fName.Text != "" && lName.Text != "" && Email.Text != "" && dateTimePicker1.Text != ""  && Contact.Text != "")
+			{
+			 SqlCommand	cmd = new SqlCommand("UPDATE Person set FirstName=@firstName,LastName=@lastName, Contact=@Contact, Email=@email, DateOfBirth=@dob, Gender=@gender where Id=@id", con);
+				con.Open();
+				cmd.Parameters.AddWithValue("@id", Id);
+				cmd.Parameters.AddWithValue("@firstName", fName.Text);
+				cmd.Parameters.AddWithValue("@lastName", lName.Text);
+				cmd.Parameters.AddWithValue("@Contact", Contact.Text);
+				cmd.Parameters.AddWithValue("@email", Email.Text);
+				cmd.Parameters.AddWithValue("@dob", dateTimePicker1.Text);
+				string g = Gender.ToString();
+				int gender = GetGenderFromLookup(g);
+				cmd.Parameters.AddWithValue("@gender", gender);
+				cmd.ExecuteNonQuery();
+				
+				con.Close();
+				
+			
+				con.Close();
+					MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				
 
-			con.Close();
-			MessageBox.Show("Updated sucessfully!");
+				}
+				
+
+		
+			else
+				MessageBox.Show("Select Data to Update!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 		}
 
@@ -196,16 +253,17 @@ namespace WindowsFormsApp1
 
 		private void fName_Validating(object sender, CancelEventArgs e)
 		{
-
-		}
+			
+			}
 
 		private void Email_Validating(object sender, CancelEventArgs e)
 		{
 			if (!Regex.IsMatch(Email.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
 			{
-				MessageBox.Show("Enter valid Email address");
-				Email.SelectAll();
 				e.Cancel = true;
+				Email.Focus();
+				MessageBox.Show("Please");
+
 			}
 		}
 
@@ -231,11 +289,90 @@ namespace WindowsFormsApp1
 				Contact.Focus();
 
 			}
+			else
+			{
+				e.Cancel = false;
+			}
 		}
 
 		private void label7_Click(object sender, EventArgs e)
 		{
 
 		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			Advisor adv = new Advisor();
+			adv.Show();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			Home home = new Home();
+			home.Show();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			Form1 stu = new Form1();
+			stu.Show();
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			Project pro = new Project();
+			pro.Show();
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			Evaluation eval = new Evaluation();
+			eval.Show();
+		}
+
+		private void button11_Click(object sender, EventArgs e)
+		{
+			Student_Group home = new Student_Group();
+			home.Show();
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			AssignAdvisor home = new AssignAdvisor();
+			home.Show();
+		}
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+			GroupProject home = new GroupProject();
+			home.Show();
+		}
+
+		private void button14_Click(object sender, EventArgs e)
+		{
+			GroupEvaluation home = new GroupEvaluation();
+			home.Show();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			if (Id != 0)
+			{
+				SqlCommand cmd = new SqlCommand("delete Person where ID=@id", con);
+				con.Open();
+				cmd.Parameters.AddWithValue("@id", Id);
+				cmd.ExecuteNonQuery();
+				con.Close();
+				MessageBox.Show("Data Deleted Successfully!");
+				
+				ClearData();
+			}
+
+			else
+			{
+				MessageBox.Show("Please Select Data to Delete");
+			}
+		
+	}
 	}
 }

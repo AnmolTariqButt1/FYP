@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
 		private void Save_Click(object sender, EventArgs e)
 		{
 
-			if (obtMarks.Text != "")
+			if (obtMarks.Text != ""  && groupCombo.Text != "" && evaluationCombo.Text != "")
 			{
 				con.Open();
 

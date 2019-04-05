@@ -29,29 +29,48 @@ namespace WindowsFormsApp1
 
 		private void Save_Click(object sender, EventArgs e)
 		{
-			if(group.Text != "" && student.Text != "")
+			con.Open();
+			SqlCommand cmd0 = new SqlCommand("SELECT COUNT(1) FROM GroupStudent WHERE (GroupId = '" + group.Text + " ')", con);
+			object std1 = cmd0.ExecuteScalar();
+			int std = 0;
+			if (!(std1 == DBNull.Value))
 			{
-				con.Open();
-				string query = "INSERT into GroupStudent(StudentId, GroupId, Status, AssignmentDate) VALUES ( (Select Id FROM Student WHERE RegistrationNo =  @regNo) , (Select Id FROM [Group] WHERE Id = @id), @stat, @ass)";
-
-				SqlCommand cmd = new SqlCommand(query, con);
-				cmd.Parameters.AddWithValue("@regNo", student.Text);
-				cmd.Parameters.AddWithValue("@id", group.Text);
-				cmd.Parameters.AddWithValue("@stat", status.Text);
-				cmd.Parameters.AddWithValue("@ass", DateTime.Parse(dateTimePicker1.Text));
-
-
-
-				cmd.ExecuteNonQuery();
-				MessageBox.Show("Data Updated Successfully");
-				con.Close();
-				MessageBox.Show("Data saved Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				
+				std = Convert.ToInt32(std1);
 			}
-			else
-				MessageBox.Show("Fill all the fields!");
-		}
 
+			con.Close();
+			if (std == 4)
+			{
+
+				MessageBox.Show("No more students can be added because this group already contains 4 students.");
+			}
+
+			else
+			{
+
+				if (group.Text != "" && student.Text != "")
+				{
+					con.Open();
+					string query = "INSERT into GroupStudent(StudentId, GroupId, Status, AssignmentDate) VALUES ( (Select Id FROM Student WHERE RegistrationNo =  @regNo) , (Select Id FROM [Group] WHERE Id = @id), @stat, @ass)";
+
+					SqlCommand cmd = new SqlCommand(query, con);
+					cmd.Parameters.AddWithValue("@regNo", student.Text);
+					cmd.Parameters.AddWithValue("@id", group.Text);
+					cmd.Parameters.AddWithValue("@stat", status.Text);
+					cmd.Parameters.AddWithValue("@ass", DateTime.Parse(dateTimePicker1.Text));
+
+
+
+					cmd.ExecuteNonQuery();
+					MessageBox.Show("Data Updated Successfully");
+					con.Close();
+					MessageBox.Show("Data saved Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				}
+				else
+					MessageBox.Show("Fill all the fields!");
+			}
+		}
 		private void Female_CheckedChanged(object sender, EventArgs e)
 		{
 

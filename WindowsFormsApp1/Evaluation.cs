@@ -38,26 +38,42 @@ namespace WindowsFormsApp1
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (name.Text != "" && marks.Text != "" && Wtg.Text != "")
+			con.Open();
+			SqlCommand reg = new SqlCommand("SELECT COUNT(*) FROM [Evaluation] WHERE (Name = @user and TotalMarks= @marks and TotalWeightage = @wtg)", con);
+			reg.Parameters.AddWithValue("@user", name.Text);
+			reg.Parameters.AddWithValue("@marks", marks.Text);
+			reg.Parameters.AddWithValue("@wtg", Wtg.Text);
+			int UserExist = (int)reg.ExecuteScalar();
+			con.Close();
+			if (UserExist > 0)
 			{
-				con.Open();
-				string query = "INSERT into Evaluation(Name, TotalMarks, TotalWeightage) VALUES ('" + name.Text + "','" + marks.Text + "','" + Wtg.Text + "')";
-					SqlDataAdapter cmd = new SqlDataAdapter(query, con);
-					
-					
-
-					cmd.SelectCommand.ExecuteNonQuery();
-				MessageBox.Show("Data saved Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				ClearData();
-
+				MessageBox.Show("This Evaluation has already Inserted");
 			}
 			else
-				MessageBox.Show("Fill all the fields!");
+			{
+				if (name.Text != "" && marks.Text != "" && Wtg.Text != "")
+				{
+					con.Open();
+					string query = "INSERT into Evaluation(Name, TotalMarks, TotalWeightage) VALUES ('" + name.Text + "','" + marks.Text + "','" + Wtg.Text + "')";
+					SqlDataAdapter cmd = new SqlDataAdapter(query, con);
+
+
+
+					cmd.SelectCommand.ExecuteNonQuery();
+					con.Close();
+					MessageBox.Show("Data saved Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClearData();
+
+				}
+				else
+					MessageBox.Show("Fill all the Fields ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			}
 		}
 
 		private void View_Click(object sender, EventArgs e)
 		{
-			con.Close();
+			
 			con.Open();
 
 			String query = "SELECT Id,Name,TotalMarks,TotalWeightage  FROM Evaluation";
@@ -68,12 +84,10 @@ namespace WindowsFormsApp1
 			con.Close();
 		}
 
+		int selectedRow;
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-			Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-			name.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-			marks.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-			Wtg.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			selectedRow = e.RowIndex;
 
 		}
 
@@ -81,24 +95,31 @@ namespace WindowsFormsApp1
 		{
 			if (name.Text != "" && marks.Text != "" && Wtg.Text != "")
 			{
-				SqlCommand cmd = new SqlCommand("UPDATE Evaluation SET Name=@name1,TotalMarks=@tmarks, TotalWeightage = @tWtg WHERE Id=@id", con);
 				con.Open();
-				cmd.Parameters.AddWithValue("@id", Id);
-				cmd.Parameters.AddWithValue("@name1", name.Text);
-				cmd.Parameters.AddWithValue("@tMarks", marks.Text);
-				cmd.Parameters.AddWithValue("@tWtg", Wtg.Text);
+				SqlCommand count = new SqlCommand("SELECT COUNT(*) FROM Evaluation", con);
+				int c = Convert.ToInt32(count.ExecuteScalar().ToString());
+
+				if (c != 0)
+				{
 
 
-				cmd.ExecuteNonQuery();
-				MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				con.Close();
+					DataGridViewRow row = new DataGridViewRow();
+					row = dataGridView1.Rows[selectedRow];
+					row.Cells[1].Value = name.Text;
+					row.Cells[2].Value = marks.Text;
+					row.Cells[3].Value = Wtg.Text;
+					con.Close();
+					MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClearData();
 
-				ClearData();
+				}
+				else
+				{
+					MessageBox.Show("There is No Data. Insert Data First.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
 			}
 			else
-			{
-				MessageBox.Show("Please Select Data to Update");
-			}
+				MessageBox.Show("Fil all the Fields", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 		}
 
@@ -118,6 +139,65 @@ namespace WindowsFormsApp1
 			{
 				MessageBox.Show("Please Select Data to Delete");
 			}
+		}
+
+		private void Evaluation_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button4_Click_1(object sender, EventArgs e)
+		{
+			Home home = new Home();
+			home.Show();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			Form1 home = new Form1();
+			home.Show();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			Advisor home = new Advisor();
+			home.Show();
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			Project home = new Project();
+			home.Show();
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			Evaluation home = new Evaluation();
+			home.Show();
+		}
+
+		private void button11_Click(object sender, EventArgs e)
+		{
+	Student_Group home = new Student_Group();
+			home.Show();
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			AssignAdvisor home = new AssignAdvisor();
+			home.Show();
+		}
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+			GroupProject home = new GroupProject();
+			home.Show();
+		}
+
+		private void button14_Click(object sender, EventArgs e)
+		{
+		GroupEvaluation home = new Evaluation();
+			home.Show();
 		}
 	}
 }
