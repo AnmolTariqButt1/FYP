@@ -51,6 +51,7 @@
 			this.button7 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
+			this.label4 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -205,6 +206,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.button7, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.button4, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.button8, 0, 4);
+			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 12;
@@ -322,6 +324,16 @@
 			this.button8.UseVisualStyleBackColor = true;
 			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Ravie", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(3, 0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(116, 50);
+			this.label4.TabIndex = 14;
+			this.label4.Text = "FYP";
+			// 
 			// Evaluation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +354,7 @@
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -371,5 +384,6 @@
 		private System.Windows.Forms.Button button7;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button8;
+		private System.Windows.Forms.Label label4;
 	}
 }

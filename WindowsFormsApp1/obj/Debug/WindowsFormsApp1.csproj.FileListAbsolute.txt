@@ -38,4 +38,3 @@ C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsForm
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\bin\Debug\itextsharp.dll
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\bin\Debug\itextsharp.xml
 C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
-C:\Users\Hassan Butt\Documents\GitHub\FYP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Reports.resources

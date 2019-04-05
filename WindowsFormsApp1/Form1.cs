@@ -262,7 +262,7 @@ namespace WindowsFormsApp1
 			{
 				e.Cancel = true;
 				Email.Focus();
-				MessageBox.Show("Please");
+				MessageBox.Show("Please Enter Valid Email!");
 
 			}
 		}

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -228,6 +229,47 @@ namespace WindowsFormsApp1
 		{
 			AssignAdvisor home = new AssignAdvisor();
 			home.Show();
+		}
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+			GroupProject home = new GroupProject();
+			home.Show();
+		}
+
+		private void button14_Click(object sender, EventArgs e)
+		{
+			GroupEvaluation home = new GroupEvaluation();
+			home.Show();
+		}
+
+		private void Contact_Validating(object sender, CancelEventArgs e)
+		{
+			Regex validator = new Regex("^[0-9]{10,12}$");
+			string match = validator.Match(Contact.Text).Value.ToString();
+			if (match.Length != 11)
+			{
+				MessageBox.Show("invalid phone number. Enter 0-11 digits");
+				Contact.Focus();
+
+			}
+			else
+			{
+				e.Cancel = false;
+			}
+		}
+
+		private void Email_Validating(object sender, CancelEventArgs e)
+		{
+			if (!Regex.IsMatch(Email.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
+			{
+				e.Cancel = true;
+				Email.Focus();
+				MessageBox.Show("Please Enter Valid Email!");
+
+			
+
+		}
 		}
 	}
 }

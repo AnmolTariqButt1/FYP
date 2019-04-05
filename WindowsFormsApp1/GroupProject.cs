@@ -90,5 +90,64 @@ namespace WindowsFormsApp1
 			dataGridView1.DataSource = dt;
 			con.Close();
 		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+			Home home = new Home();
+			home.Show();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			Form1 home = new Form1();
+			home.Show();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			Advisor home = new Advisor();
+			home.Show();
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			Project home = new Project();
+			home.Show();
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			Evaluation home = new Evaluation();
+			home.Show();
+		}
+
+		private void button11_Click(object sender, EventArgs e)
+		{
+			Student_Group home = new Student_Group();
+			home.Show();
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			AssignAdvisor home = new AssignAdvisor();
+			home.Show();
+		}
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+			GroupProject home = new GroupProject();
+			home.Show();
+		}
+
+		private void button14_Click(object sender, EventArgs e)
+		{
+			GroupEvaluation home = new GroupEvaluation();
+			home.Show();
+		}
 	}
 }

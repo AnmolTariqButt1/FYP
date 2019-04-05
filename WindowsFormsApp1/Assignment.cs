@@ -95,5 +95,32 @@ namespace WindowsFormsApp1
 		{
 
 		}
+
+		private void Assignment_Load(object sender, EventArgs e)
+		{
+			SqlDataAdapter SDA = new SqlDataAdapter("Select * FROM [Group]", con);
+			DataTable dt = new DataTable();
+			SDA.Fill(dt);
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				group.Items.Add(dt.Rows[i]["Id"]);
+			}
+
+
+			SqlDataAdapter SDA1 = new SqlDataAdapter("Select * FROM [Student]", con);
+			DataTable dt1 = new DataTable();
+			SDA1.Fill(dt1);
+			for (int i = 0; i < dt1.Rows.Count; i++)
+			{
+				student.Items.Add(dt1.Rows[i]["RegistrationNo"]);
+			}
+
+
+		}
+
+		private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

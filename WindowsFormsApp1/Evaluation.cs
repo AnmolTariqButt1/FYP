@@ -196,7 +196,7 @@ namespace WindowsFormsApp1
 
 		private void button14_Click(object sender, EventArgs e)
 		{
-		GroupEvaluation home = new Evaluation();
+		GroupEvaluation home = new GroupEvaluation();
 			home.Show();
 		}
 	}

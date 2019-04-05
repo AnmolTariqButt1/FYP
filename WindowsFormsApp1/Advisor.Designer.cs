@@ -52,16 +52,17 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.Update = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.button14 = new System.Windows.Forms.Button();
-			this.button13 = new System.Windows.Forms.Button();
-			this.button12 = new System.Windows.Forms.Button();
-			this.button11 = new System.Windows.Forms.Button();
-			this.button10 = new System.Windows.Forms.Button();
-			this.button9 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
+			this.button7 = new System.Windows.Forms.Button();
+			this.button9 = new System.Windows.Forms.Button();
+			this.button10 = new System.Windows.Forms.Button();
+			this.button11 = new System.Windows.Forms.Button();
+			this.button12 = new System.Windows.Forms.Button();
+			this.button13 = new System.Windows.Forms.Button();
+			this.button14 = new System.Windows.Forms.Button();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.label10 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -88,9 +89,9 @@
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Location = new System.Drawing.Point(140, 6);
+			this.groupBox1.Location = new System.Drawing.Point(145, 6);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(740, 282);
+			this.groupBox1.Size = new System.Drawing.Size(763, 282);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -156,6 +157,7 @@
 			this.Contact.Name = "Contact";
 			this.Contact.Size = new System.Drawing.Size(193, 20);
 			this.Contact.TabIndex = 15;
+			this.Contact.Validating += new System.ComponentModel.CancelEventHandler(this.Contact_Validating);
 			// 
 			// Email
 			// 
@@ -163,6 +165,7 @@
 			this.Email.Name = "Email";
 			this.Email.Size = new System.Drawing.Size(193, 20);
 			this.Email.TabIndex = 14;
+			this.Email.Validating += new System.ComponentModel.CancelEventHandler(this.Email_Validating);
 			// 
 			// sal
 			// 
@@ -273,7 +276,7 @@
 			// button1
 			// 
 			this.button1.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(140, 294);
+			this.button1.Location = new System.Drawing.Point(145, 294);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 19;
@@ -305,7 +308,7 @@
 			// Update
 			// 
 			this.Update.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Update.Location = new System.Drawing.Point(327, 294);
+			this.Update.Location = new System.Drawing.Point(343, 294);
 			this.Update.Name = "Update";
 			this.Update.Size = new System.Drawing.Size(75, 23);
 			this.Update.TabIndex = 22;
@@ -319,13 +322,112 @@
 			this.dataGridView1.AllowUserToDeleteRows = false;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			this.dataGridView1.Location = new System.Drawing.Point(140, 323);
+			this.dataGridView1.Location = new System.Drawing.Point(142, 323);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(740, 194);
+			this.dataGridView1.Size = new System.Drawing.Size(763, 194);
 			this.dataGridView1.TabIndex = 23;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+			// 
+			// button8
+			// 
+			this.button8.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button8.Location = new System.Drawing.Point(3, 159);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(134, 33);
+			this.button8.TabIndex = 6;
+			this.button8.Text = "Advisor";
+			this.button8.UseVisualStyleBackColor = true;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
+			// 
+			// button4
+			// 
+			this.button4.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button4.Location = new System.Drawing.Point(3, 82);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(134, 33);
+			this.button4.TabIndex = 0;
+			this.button4.Text = "Home";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click_1);
+			// 
+			// button7
+			// 
+			this.button7.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button7.Location = new System.Drawing.Point(3, 121);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(134, 32);
+			this.button7.TabIndex = 3;
+			this.button7.Text = "Student";
+			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
+			// 
+			// button9
+			// 
+			this.button9.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button9.Location = new System.Drawing.Point(3, 198);
+			this.button9.Name = "button9";
+			this.button9.Size = new System.Drawing.Size(134, 33);
+			this.button9.TabIndex = 7;
+			this.button9.Text = "Projects";
+			this.button9.UseVisualStyleBackColor = true;
+			this.button9.Click += new System.EventHandler(this.button9_Click);
+			// 
+			// button10
+			// 
+			this.button10.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button10.Location = new System.Drawing.Point(3, 238);
+			this.button10.Name = "button10";
+			this.button10.Size = new System.Drawing.Size(134, 32);
+			this.button10.TabIndex = 8;
+			this.button10.Text = "Evaluation";
+			this.button10.UseVisualStyleBackColor = true;
+			this.button10.Click += new System.EventHandler(this.button10_Click);
+			// 
+			// button11
+			// 
+			this.button11.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button11.Location = new System.Drawing.Point(3, 276);
+			this.button11.Name = "button11";
+			this.button11.Size = new System.Drawing.Size(134, 33);
+			this.button11.TabIndex = 9;
+			this.button11.Text = "Group";
+			this.button11.UseVisualStyleBackColor = true;
+			this.button11.Click += new System.EventHandler(this.button11_Click);
+			// 
+			// button12
+			// 
+			this.button12.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button12.Location = new System.Drawing.Point(3, 317);
+			this.button12.Name = "button12";
+			this.button12.Size = new System.Drawing.Size(134, 33);
+			this.button12.TabIndex = 10;
+			this.button12.Text = "Group Advisor";
+			this.button12.UseVisualStyleBackColor = true;
+			this.button12.Click += new System.EventHandler(this.button12_Click);
+			// 
+			// button13
+			// 
+			this.button13.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button13.Location = new System.Drawing.Point(3, 356);
+			this.button13.Name = "button13";
+			this.button13.Size = new System.Drawing.Size(134, 33);
+			this.button13.TabIndex = 11;
+			this.button13.Text = "Group Project";
+			this.button13.UseVisualStyleBackColor = true;
+			this.button13.Click += new System.EventHandler(this.button13_Click);
+			// 
+			// button14
+			// 
+			this.button14.Font = new System.Drawing.Font("Monotype Corsiva", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button14.Location = new System.Drawing.Point(3, 396);
+			this.button14.Name = "button14";
+			this.button14.Size = new System.Drawing.Size(134, 32);
+			this.button14.TabIndex = 12;
+			this.button14.Text = "Group Evaluation";
+			this.button14.UseVisualStyleBackColor = true;
+			this.button14.Click += new System.EventHandler(this.button14_Click);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -340,6 +442,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.button7, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.button4, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.button8, 0, 4);
+			this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(-1, 6);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 12;
@@ -355,112 +458,25 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(135, 511);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(140, 511);
 			this.tableLayoutPanel1.TabIndex = 24;
 			// 
-			// button14
+			// label10
 			// 
-			this.button14.Font = new System.Drawing.Font("Monotype Corsiva", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button14.Location = new System.Drawing.Point(3, 396);
-			this.button14.Name = "button14";
-			this.button14.Size = new System.Drawing.Size(129, 32);
-			this.button14.TabIndex = 12;
-			this.button14.Text = "Group Evaluation";
-			this.button14.UseVisualStyleBackColor = true;
-			// 
-			// button13
-			// 
-			this.button13.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button13.Location = new System.Drawing.Point(3, 356);
-			this.button13.Name = "button13";
-			this.button13.Size = new System.Drawing.Size(129, 33);
-			this.button13.TabIndex = 11;
-			this.button13.Text = "Group Project";
-			this.button13.UseVisualStyleBackColor = true;
-			// 
-			// button12
-			// 
-			this.button12.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button12.Location = new System.Drawing.Point(3, 317);
-			this.button12.Name = "button12";
-			this.button12.Size = new System.Drawing.Size(129, 33);
-			this.button12.TabIndex = 10;
-			this.button12.Text = "Group Advisor";
-			this.button12.UseVisualStyleBackColor = true;
-			this.button12.Click += new System.EventHandler(this.button12_Click);
-			// 
-			// button11
-			// 
-			this.button11.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button11.Location = new System.Drawing.Point(3, 276);
-			this.button11.Name = "button11";
-			this.button11.Size = new System.Drawing.Size(129, 33);
-			this.button11.TabIndex = 9;
-			this.button11.Text = "Group";
-			this.button11.UseVisualStyleBackColor = true;
-			this.button11.Click += new System.EventHandler(this.button11_Click);
-			// 
-			// button10
-			// 
-			this.button10.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button10.Location = new System.Drawing.Point(3, 238);
-			this.button10.Name = "button10";
-			this.button10.Size = new System.Drawing.Size(129, 32);
-			this.button10.TabIndex = 8;
-			this.button10.Text = "Evaluation";
-			this.button10.UseVisualStyleBackColor = true;
-			this.button10.Click += new System.EventHandler(this.button10_Click);
-			// 
-			// button9
-			// 
-			this.button9.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button9.Location = new System.Drawing.Point(3, 198);
-			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(129, 33);
-			this.button9.TabIndex = 7;
-			this.button9.Text = "Projects";
-			this.button9.UseVisualStyleBackColor = true;
-			this.button9.Click += new System.EventHandler(this.button9_Click);
-			// 
-			// button7
-			// 
-			this.button7.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button7.Location = new System.Drawing.Point(3, 121);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(129, 32);
-			this.button7.TabIndex = 3;
-			this.button7.Text = "Student";
-			this.button7.UseVisualStyleBackColor = true;
-			this.button7.Click += new System.EventHandler(this.button7_Click);
-			// 
-			// button4
-			// 
-			this.button4.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button4.Location = new System.Drawing.Point(3, 82);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(129, 33);
-			this.button4.TabIndex = 0;
-			this.button4.Text = "Home";
-			this.button4.UseVisualStyleBackColor = true;
-			this.button4.Click += new System.EventHandler(this.button4_Click_1);
-			// 
-			// button8
-			// 
-			this.button8.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button8.Location = new System.Drawing.Point(3, 159);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(129, 33);
-			this.button8.TabIndex = 6;
-			this.button8.Text = "Advisor";
-			this.button8.UseVisualStyleBackColor = true;
-			this.button8.Click += new System.EventHandler(this.button8_Click);
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Ravie", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(3, 0);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(116, 50);
+			this.label10.TabIndex = 14;
+			this.label10.Text = "FYP";
 			// 
 			// Advisor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLight;
-			this.ClientSize = new System.Drawing.Size(883, 519);
+			this.ClientSize = new System.Drawing.Size(903, 514);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.Update);
@@ -474,6 +490,7 @@
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -504,15 +521,16 @@
 		private System.Windows.Forms.DateTimePicker DOB;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button button14;
-		private System.Windows.Forms.Button button13;
-		private System.Windows.Forms.Button button12;
-		private System.Windows.Forms.Button button11;
-		private System.Windows.Forms.Button button10;
-		private System.Windows.Forms.Button button9;
-		private System.Windows.Forms.Button button7;
-		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button8;
+		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button button7;
+		private System.Windows.Forms.Button button9;
+		private System.Windows.Forms.Button button10;
+		private System.Windows.Forms.Button button11;
+		private System.Windows.Forms.Button button12;
+		private System.Windows.Forms.Button button13;
+		private System.Windows.Forms.Button button14;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Label label10;
 	}
 }
