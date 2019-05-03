@@ -122,5 +122,53 @@ namespace WindowsFormsApp1
 		{
 
 		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			
+			group.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+			status.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+			status.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			
+
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			con.Open();
+
+			if (group.Text != "" && status.Text != "" && student.Text != "" )
+			{
+				SqlCommand cmd = new SqlCommand("UPDATE GroupStudent set GroupId=@firstName,StudentId=@lastName, Status=@Contact,  AssignmentDate=@dob where GroupId=@firstName", con);
+				
+				cmd.Parameters.AddWithValue("@firstName", group.Text);
+				cmd.Parameters.AddWithValue("@lastName", student.Text);
+				cmd.Parameters.AddWithValue("@Contact", status.Text);
+		 	cmd.Parameters.AddWithValue("@email", DateTime.Parse(dateTimePicker1.Text));
+				
+				cmd.ExecuteNonQuery();
+
+
+				con.Close();
+
+
+
+				MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+			}
+
+
+
+			else
+				MessageBox.Show("Select Data to Update!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			con.Close();
+		}
+
+		private void Assignment_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
+		}
 	}
 }

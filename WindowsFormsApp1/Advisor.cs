@@ -140,15 +140,28 @@ namespace WindowsFormsApp1
 			dataGridView1.DataSource = dt;
 			con.Close();
 		}
+		int Id = 0;
 
 		int selectedRow;
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-			selectedRow = e.RowIndex;
+			//selectedRow = e.RowIndex;
+
+			Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+			fName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+			lName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+			Contact.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			comboBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+			Email.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+			DOB.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+			Gender = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+			sal.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
+			con.Close();
 			con.Open();
 
 			SqlCommand count = new SqlCommand("SELECT COUNT(*) FROM Advisor", con);

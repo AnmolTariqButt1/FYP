@@ -98,8 +98,7 @@ namespace WindowsFormsApp1
 
 		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
 		{
-			Home home = new Home();
-			home.Show();
+			
 		}
 
 		private void button7_Click(object sender, EventArgs e)
@@ -148,6 +147,17 @@ namespace WindowsFormsApp1
 		{
 			GroupEvaluation home = new GroupEvaluation();
 			home.Show();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			Home home = new Home();
+			home.Show();
+		}
+
+		private void GroupProject_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
 		}
 	}
 }

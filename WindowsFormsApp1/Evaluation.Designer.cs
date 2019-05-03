@@ -349,6 +349,7 @@
 			this.Controls.Add(this.button3);
 			this.Name = "Evaluation";
 			this.Text = "Evaluation";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Evaluation_FormClosed);
 			this.Load += new System.EventHandler(this.Evaluation_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

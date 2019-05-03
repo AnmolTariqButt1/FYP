@@ -43,20 +43,16 @@ namespace WindowsFormsApp1
 
 		private void Save_Click(object sender, EventArgs e)
 		{
-			if (Date.Text != "")
 			{
 				con.Open();
-				String query = " INSERT INTO [Group](Created_On) VALUES('" + Date.Text + "')";
+				String query = " INSERT INTO [Group](Created_On) VALUES('" + DateTime.Parse(Date.Text) + "')";
 				SqlDataAdapter SDA = new SqlDataAdapter(query, con);
 				SDA.SelectCommand.ExecuteNonQuery();
 				con.Close();
 				ClearData();
 				MessageBox.Show("Group created Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-			else
-			{
-				MessageBox.Show("Fill the required Field", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+			
 
 
 
@@ -132,6 +128,36 @@ namespace WindowsFormsApp1
 		{
 			GroupEvaluation home = new GroupEvaluation();
 			home.Show();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			con.Open();
+
+
+				SqlCommand cmd = new SqlCommand("UPDATE [Group] set Created_On=@dob,  where Id=@id", con);
+
+				cmd.Parameters.AddWithValue("@id", Id);
+			
+				cmd.Parameters.AddWithValue("@dob", DateTime.Parse(Date.Text));
+				
+				cmd.ExecuteNonQuery();
+
+			
+				con.Close();
+
+
+
+				MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+			
+		
+	}
+
+		private void Student_Group_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
 		}
 	}
 }

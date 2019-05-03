@@ -353,6 +353,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "AssignAdvisor";
 			this.Text = "AssignAdvisor";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AssignAdvisor_FormClosed);
 			this.Load += new System.EventHandler(this.AssignAdvisor_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

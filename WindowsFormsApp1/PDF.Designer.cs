@@ -97,6 +97,7 @@
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "PDF";
 			this.Text = "PDF";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PDF_FormClosed);
 			this.Load += new System.EventHandler(this.PDF_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

@@ -29,6 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.student = new System.Windows.Forms.ComboBox();
+			this.group = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.status = new System.Windows.Forms.ComboBox();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -40,10 +44,6 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.View = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.status = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.group = new System.Windows.Forms.ComboBox();
-			this.student = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
@@ -61,11 +61,49 @@
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.tMarks);
 			this.groupBox1.Controls.Add(this.tWtg);
-			this.groupBox1.Location = new System.Drawing.Point(2, 2);
+			this.groupBox1.Location = new System.Drawing.Point(3, 3);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(796, 239);
 			this.groupBox1.TabIndex = 12;
 			this.groupBox1.TabStop = false;
+			// 
+			// student
+			// 
+			this.student.FormattingEnabled = true;
+			this.student.Location = new System.Drawing.Point(259, 119);
+			this.student.Name = "student";
+			this.student.Size = new System.Drawing.Size(175, 21);
+			this.student.TabIndex = 25;
+			this.student.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+			// 
+			// group
+			// 
+			this.group.FormattingEnabled = true;
+			this.group.Location = new System.Drawing.Point(259, 69);
+			this.group.Name = "group";
+			this.group.Size = new System.Drawing.Size(175, 21);
+			this.group.TabIndex = 24;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(304, 16);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(86, 36);
+			this.label4.TabIndex = 23;
+			this.label4.Text = "Group ";
+			// 
+			// status
+			// 
+			this.status.FormattingEnabled = true;
+			this.status.Items.AddRange(new object[] {
+            "Active",
+            "InActive"});
+			this.status.Location = new System.Drawing.Point(259, 160);
+			this.status.Name = "status";
+			this.status.Size = new System.Drawing.Size(175, 21);
+			this.status.TabIndex = 22;
 			// 
 			// dateTimePicker1
 			// 
@@ -145,6 +183,7 @@
 			this.button4.TabIndex = 14;
 			this.button4.Text = "Update";
 			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
 			// 
 			// button3
 			// 
@@ -174,44 +213,7 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(796, 172);
 			this.dataGridView1.TabIndex = 23;
-			// 
-			// status
-			// 
-			this.status.FormattingEnabled = true;
-			this.status.Items.AddRange(new object[] {
-            "Active",
-            "InActive"});
-			this.status.Location = new System.Drawing.Point(259, 160);
-			this.status.Name = "status";
-			this.status.Size = new System.Drawing.Size(175, 21);
-			this.status.TabIndex = 22;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(304, 16);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(86, 36);
-			this.label4.TabIndex = 23;
-			this.label4.Text = "Group ";
-			// 
-			// group
-			// 
-			this.group.FormattingEnabled = true;
-			this.group.Location = new System.Drawing.Point(259, 69);
-			this.group.Name = "group";
-			this.group.Size = new System.Drawing.Size(175, 21);
-			this.group.TabIndex = 24;
-			// 
-			// student
-			// 
-			this.student.FormattingEnabled = true;
-			this.student.Location = new System.Drawing.Point(259, 119);
-			this.student.Name = "student";
-			this.student.Size = new System.Drawing.Size(175, 21);
-			this.student.TabIndex = 25;
-			this.student.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			// 
 			// Assignment
 			// 
@@ -226,6 +228,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "Assignment";
 			this.Text = "Assignment";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Assignment_FormClosed);
 			this.Load += new System.EventHandler(this.Assignment_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

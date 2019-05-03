@@ -89,5 +89,10 @@ namespace WindowsFormsApp1
 		{
 			exportGridToPDF(dataGridView1, "PDF");
 		}
+
+		private void PDF_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
+		}
 	}
 }

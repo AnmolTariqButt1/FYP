@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.button2 = new System.Windows.Forms.Button();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
@@ -47,9 +48,8 @@
 			this.button7 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
-			this.Date = new System.Windows.Forms.MonthCalendar();
-			this.button2 = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
+			this.Date = new System.Windows.Forms.DateTimePicker();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -58,8 +58,8 @@
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.groupBox1.Controls.Add(this.button2);
 			this.groupBox1.Controls.Add(this.Date);
+			this.groupBox1.Controls.Add(this.button2);
 			this.groupBox1.Controls.Add(this.label10);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.label1);
@@ -69,6 +69,17 @@
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+			// 
+			// button2
+			// 
+			this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button2.Location = new System.Drawing.Point(562, 94);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(151, 71);
+			this.button2.TabIndex = 25;
+			this.button2.Text = "Manage Group";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// label10
 			// 
@@ -129,6 +140,7 @@
 			this.button4.TabIndex = 10;
 			this.button4.Text = "Update";
 			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
 			// 
 			// button3
 			// 
@@ -282,23 +294,6 @@
 			this.button8.UseVisualStyleBackColor = true;
 			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
-			// Date
-			// 
-			this.Date.Location = new System.Drawing.Point(293, 74);
-			this.Date.Name = "Date";
-			this.Date.TabIndex = 24;
-			// 
-			// button2
-			// 
-			this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(562, 94);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(151, 71);
-			this.button2.TabIndex = 25;
-			this.button2.Text = "Manage Group";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -308,6 +303,13 @@
 			this.label4.Size = new System.Drawing.Size(116, 50);
 			this.label4.TabIndex = 14;
 			this.label4.Text = "FYP";
+			// 
+			// Date
+			// 
+			this.Date.Location = new System.Drawing.Point(244, 76);
+			this.Date.Name = "Date";
+			this.Date.Size = new System.Drawing.Size(200, 20);
+			this.Date.TabIndex = 26;
 			// 
 			// Student_Group
 			// 
@@ -324,6 +326,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "Student_Group";
 			this.Text = "Student_Group";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Student_Group_FormClosed);
 			this.Load += new System.EventHandler(this.Student_Group_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -356,7 +359,7 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button8;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.MonthCalendar Date;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.DateTimePicker Date;
 	}
 }

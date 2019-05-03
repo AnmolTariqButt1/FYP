@@ -45,11 +45,11 @@ namespace WindowsFormsApp1
 			fName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 			 lName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-			 Contact.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-			RegNo.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-			Email.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-			dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-			    Gender = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+			 Contact.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+			RegNo.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			Email.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+			dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+			    Gender = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
 			 
 		}
 
@@ -119,9 +119,9 @@ namespace WindowsFormsApp1
 					SqlCommand cmd = new SqlCommand(query1, con);
 					var v = cmd.ExecuteScalar().ToString();
 					value1 = int.Parse(v);
-					string q = "insert into Student values('" + value1 + "','" + Reg.Text.ToString() + "')";
-					SqlCommand cmd1 = new SqlCommand(q, con);
-					int i = cmd1.ExecuteNonQuery();
+					string q = "insert into Student(Id, RegistrationNo) values('" + value1 + "','" + RegNo.Text + "')";
+					SqlDataAdapter SDA1 = new SqlDataAdapter(q, con);
+					int i = SDA1.SelectCommand.ExecuteNonQuery();
 					con.Close();
 					MessageBox.Show("Student is registered successfully", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					ClearData();
@@ -198,23 +198,30 @@ namespace WindowsFormsApp1
 
 			if (fName.Text != "" && lName.Text != "" && Email.Text != "" && dateTimePicker1.Text != ""  && Contact.Text != "")
 			{
-			 SqlCommand	cmd = new SqlCommand("UPDATE Person set FirstName=@firstName,LastName=@lastName, Contact=@Contact, Email=@email, DateOfBirth=@dob, Gender=@gender where Id=@id", con);
-				con.Open();
+			 SqlCommand	cmd = new SqlCommand("UPDATE Person set FirstName=@firstName,LastName=@lastName, Contact=@Contact,  Email=@email, DateOfBirth=@dob, Gender=@gender where Id=@id", con);
+				
 				cmd.Parameters.AddWithValue("@id", Id);
 				cmd.Parameters.AddWithValue("@firstName", fName.Text);
 				cmd.Parameters.AddWithValue("@lastName", lName.Text);
 				cmd.Parameters.AddWithValue("@Contact", Contact.Text);
+				cmd.Parameters.AddWithValue("@reg", RegNo.Text);
 				cmd.Parameters.AddWithValue("@email", Email.Text);
-				cmd.Parameters.AddWithValue("@dob", dateTimePicker1.Text);
+				cmd.Parameters.AddWithValue("@dob",DateTime.Parse( dateTimePicker1.Text));
 				string g = Gender.ToString();
 				int gender = GetGenderFromLookup(g);
 				cmd.Parameters.AddWithValue("@gender", gender);
+
 				cmd.ExecuteNonQuery();
-				
+
+
+				SqlCommand cmd1 = new SqlCommand("UPDATE Student set RegistrationNo = @reg where Id=@id", con);
+				cmd1.Parameters.AddWithValue("@id", Id);
+				cmd1.Parameters.AddWithValue("@reg", RegNo.Text);
+				cmd1.ExecuteNonQuery();
 				con.Close();
 				
 			
-				con.Close();
+				
 					MessageBox.Show("Data updated Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				
 
@@ -224,7 +231,7 @@ namespace WindowsFormsApp1
 		
 			else
 				MessageBox.Show("Select Data to Update!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+			con.Close();
 		}
 
 		private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -269,14 +276,7 @@ namespace WindowsFormsApp1
 
 		private void RegNo_Validating(object sender, CancelEventArgs e)
 		{
-			if (!Regex.Match(RegNo.Text, "^[0-9]{4}-[A-Z]{2}-[0-9]{2,3}$").Success)
-			{
-
-				MessageBox.Show("Please Enter Registration Number  of the format 2016-CE-62");
-				RegNo.SelectAll();
-				e.Cancel = true;
-
-			}
+			
 		}
 
 		private void Contact_Validating(object sender, CancelEventArgs e)
@@ -374,5 +374,10 @@ namespace WindowsFormsApp1
 			}
 		
 	}
+
+		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
+		}
 	}
 }

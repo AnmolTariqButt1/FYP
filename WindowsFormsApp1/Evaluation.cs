@@ -199,5 +199,10 @@ namespace WindowsFormsApp1
 		GroupEvaluation home = new GroupEvaluation();
 			home.Show();
 		}
+
+		private void Evaluation_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
+		}
 	}
 }

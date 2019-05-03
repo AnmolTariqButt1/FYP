@@ -330,6 +330,7 @@
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "Project";
 			this.Text = "Project";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Project_FormClosed);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
